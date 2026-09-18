@@ -1,0 +1,14 @@
+// Prisma schema for the Home Services Platform.
+//
+// No data models are defined yet. Electrical, plumbing, and painting
+// domain models will be added once the business owner has approved the
+// relevant business rules (see docs/business-rules/ and
+// docs/decisions/). Do not add models here without that approval.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
