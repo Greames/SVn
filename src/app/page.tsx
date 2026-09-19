@@ -2,8 +2,20 @@
 
 import { useMemo, useState } from "react";
 
-type ServiceTab = "Electrical" | "Plumbing" | "Solar" | "Summary";
+type ServiceTab = "Electrical" | "Plumbing" | "Painting" | "Solar" | "Summary";
 type Package = "Standard" | "Premium" | "Luxury";
+
+// Coat counts, finish names, and quantities are intentionally left
+// unset here — the approved scope (docs/business-rules/estimator-v1-scope.md)
+// requires these to come from configurable business rules, not hardcoded
+// UI defaults. See docs/questions/0004-painting-scope-not-in-prototype.md.
+const paintingItems = [
+  "Putty coats",
+  "Primer coat",
+  "Interior paint coats",
+  "Exterior paint coats",
+  "Ceiling paint",
+];
 
 const electricalDefaults = [
   ["Lights", 24, 0.1],
@@ -350,7 +362,13 @@ export default function Home() {
           <section className="analysis-card card">
             <div className="analysis-tabs">
               {(
-                ["Electrical", "Plumbing", "Solar", "Summary"] as ServiceTab[]
+                [
+                  "Electrical",
+                  "Plumbing",
+                  "Painting",
+                  "Solar",
+                  "Summary",
+                ] as ServiceTab[]
               ).map((t) => (
                 <button
                   className={tab === t ? "selected" : ""}
@@ -525,6 +543,63 @@ export default function Home() {
                 <div className="option-note">
                   + Add glass partition, mixer upgrades, premium sanitaryware or
                   any custom item
+                </div>
+              </>
+            )}
+            {tab === "Painting" && (
+              <>
+                <div className="section-title">
+                  <div>
+                    <h2>Painting Specification</h2>
+                    <span>
+                      Putty, primer, and paint coats per surface — coat counts
+                      and finish tiers await business-rule configuration
+                    </span>
+                  </div>
+                  <span className="verified pending">
+                    ◐ Awaiting configuration
+                  </span>
+                </div>
+                <div className="package-tabs">
+                  {(["Standard", "Premium", "Luxury"] as Package[]).map((p) => (
+                    <button
+                      className={pkg === p ? "selected" : ""}
+                      onClick={() => setPkg(p)}
+                      key={p}
+                    >
+                      {p}
+                    </button>
+                  ))}
+                </div>
+                <table className="wide-table">
+                  <thead>
+                    <tr>
+                      <th>Surface</th>
+                      <th>Coats</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {paintingItems.map((name) => (
+                      <tr key={name}>
+                        <td>
+                          <b>{name}</b>
+                          <small>{pkg} finish</small>
+                        </td>
+                        <td>—</td>
+                        <td>
+                          <button className="link">Configure</button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                <div className="option-note">
+                  Coat counts, finish names, and material/labour quantities are
+                  not set — they require configurable business rules from the
+                  business owner (see
+                  docs/business-rules/estimator-v1-scope.md), not defaults
+                  invented in the UI.
                 </div>
               </>
             )}

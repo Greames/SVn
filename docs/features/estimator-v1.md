@@ -3,9 +3,9 @@
 **Status:** early prototype, not production-ready.
 
 `src/app/page.tsx` is a UI prototype of the estimator dashboard: floor
-plan viewer, per-service (Electrical/Plumbing/Solar/Summary) tabs, and a
-project estimate summary. It implements the shape of the experience
-described in the business rules, not final calculation logic.
+plan viewer, per-service (Electrical/Plumbing/Painting/Solar/Summary)
+tabs, and a project estimate summary. It implements the shape of the
+experience described in the business rules, not final calculation logic.
 
 Implements: [`docs/business-rules/estimator-v1-scope.md`](../business-rules/estimator-v1-scope.md)
 
@@ -27,9 +27,13 @@ Implements: [`docs/business-rules/estimator-v1-scope.md`](../business-rules/esti
 - Electrical load/cable-size guidance is hardcoded sample data, not a
   configurable rules engine.
 - No floor-plan upload/detection — the plan view is a static illustrative
-  SVG.
+  SVG. Direction is decided (upload-first, assisted — see "Approved
+  implementation direction" above) but not built, and no detection
+  provider is chosen.
 - No persistence (Prisma/Postgres) — component-local React state only.
-- No painting tab yet (scope doc covers it; UI doesn't).
+- Painting tab exists (added 2026-09-19) but has no coat counts, finish
+  names, or quantities — every row shows "—" pending business rules, per
+  `docs/questions/0004-painting-scope-not-in-prototype.md`.
 - No quotation generation, package-to-catalogue wiring, or "Generate
   Estimate" behavior — those buttons are currently inert.
 
