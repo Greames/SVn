@@ -9,6 +9,17 @@ described in the business rules, not final calculation logic.
 
 Implements: [`docs/business-rules/estimator-v1-scope.md`](../business-rules/estimator-v1-scope.md)
 
+## Approved implementation direction
+
+- Painting is a required V1 core service and the estimator UI should have a
+  Painting tab alongside Electrical and Plumbing. Painting defaults must be
+  driven by configurable business rules; no additional coat counts, finish
+  tiers, or prices are assumed here.
+- Floor-plan input is upload-first and assisted: PDF/image/CAD when
+  supported, with extracted or assisted room/dimension data that the user
+  can correct before calculation. No specific detection provider is chosen
+  yet, and uncertain detected dimensions must never be treated as exact.
+
 ## Known gaps vs. the business rules
 
 - All pricing (package totals, plumbing fixture prices) is hardcoded
