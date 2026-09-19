@@ -1,6 +1,6 @@
 # 0001 — Production Deployment Target
 
-- Status: Open
+- Status: Answered
 - Date raised: 2026-09-19
 
 ## Question
@@ -18,4 +18,4 @@ optimization, DB connection pooling, etc.) all depend on this.
 
 ## Answer
 
-(left blank until answered)
+Initial deployment will use a **free-tier hosting/deployment setup**. The specific free-tier provider and production database provider are not yet selected; do not invent them. Hosting-specific configuration should remain provider-neutral until a provider is chosen.
