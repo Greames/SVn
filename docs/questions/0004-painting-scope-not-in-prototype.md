@@ -1,6 +1,6 @@
 # 0004 — Painting Tab Missing from Prototype
 
-- Status: Open
+- Status: Answered
 - Date raised: 2026-09-19
 
 ## Question
@@ -20,4 +20,14 @@ missed rather than assuming a fix.
 
 ## Answer
 
-(left blank until answered)
+Yes. Painting is an approved core V1 service and the estimator UI should
+include a Painting tab alongside Electrical and Plumbing. The approved
+scope already defines the required painting capabilities (putty, primer,
+interior/exterior/ceiling coats, standard/premium/luxury finishes,
+material and labour quantities) and says coat counts must come from
+configurable business rules rather than hard-coded UI text.
+
+No additional painting-specific defaults have been supplied beyond the
+approved scope, so implementation must not invent coat counts, finish
+tiers, prices, or other business rules. Keep those values configurable
+until the business owner supplies them.
