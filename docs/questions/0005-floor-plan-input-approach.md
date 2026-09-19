@@ -1,6 +1,6 @@
 # 0005 — Floor Plan Input / Detection Approach
 
-- Status: Open
+- Status: Answered
 - Date raised: 2026-09-19
 
 ## Question
@@ -23,4 +23,13 @@ detection" by assumption.
 
 ## Answer
 
-(left blank until answered)
+V1 should use the approved scope's upload-first, assisted approach:
+accept a floor plan (PDF/image/CAD when supported), extract or assist with
+floor dimensions and room information, generate the starting estimate
+from that information, and let the client correct detected values before
+calculation. Uncertain detected dimensions must never be silently treated
+as exact.
+
+This does not select a specific detection provider or CAD/vision
+technology. That implementation choice remains open and must not be
+invented from the business requirements alone.
