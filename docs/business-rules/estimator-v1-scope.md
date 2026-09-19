@@ -117,9 +117,9 @@ High-end fixtures/materials and additional features where appropriate.
 
 ## Catalog / inventory model
 
-Do not build supplier integrations for V1.
+For V1, supplier websites are the source for material/product pricing and catalogue information. The estimator should use supplier website data where available rather than inventing prices. Pricing is dynamic and should not be treated as a permanently hard-coded rate card.
 
-Use a general product/catalogue model. Products can represent items commonly available from brands such as Cera, Jaquar, Havells, Polycab, etc., without requiring a live supplier connection.
+Use a general product/catalogue model. Products can represent items commonly available from brands such as Cera, Jaquar, Havells, Polycab, etc.
 
 Each catalogue item should support:
 
@@ -133,10 +133,14 @@ Each catalogue item should support:
 - Package/tier
 - Availability status
 - Image/product URL when available
+- Supplier/source reference where available
+- Pricing retrieval/update timestamp where available
 
 The estimator can present alternatives when a selected item is unavailable. A customer executive can then discuss alternatives with the client.
 
-The system should not imply that catalogue availability is real-time unless a future supplier integration provides that data.
+The system should not imply that catalogue availability is real-time unless the relevant supplier data is current and verified.
+
+The exact supplier retrieval/integration mechanism is an implementation detail and is not otherwise fixed by this requirement.
 
 ## Quantity and recalculation rules
 
@@ -256,5 +260,5 @@ The initial prototype may use sample data, but sample values must be clearly dis
 - Plan dimensions/rooms drive starting quantities where possible.
 - Engineering assumptions are visible.
 - Uncertain plan detection can be corrected manually.
-- Catalogue data is generic and does not require supplier integration.
+- Catalogue data is generic and supplier website data is used as the approved pricing/catalogue source.
 - Final quotation clearly separates included work, optional work and exclusions.
