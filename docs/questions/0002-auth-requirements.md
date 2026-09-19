@@ -1,6 +1,6 @@
 # 0002 — Authentication Requirements
 
-- Status: Open
+- Status: Answered
 - Date raised: 2026-09-19
 
 ## Question
@@ -18,4 +18,4 @@ project per customer, staff-only views).
 
 ## Answer
 
-(left blank until answered)
+Both internal users and clients require authenticated access. Internal users can access the internal/admin functionality. Clients must have isolated access to their own projects and payments only; they must not see other clients' projects, payments, or internal operational data. The exact authentication implementation/timing can follow the existing Auth.js technology decision; no additional provider decision is being invented here.
