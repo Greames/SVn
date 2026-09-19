@@ -89,6 +89,7 @@ docs/
   business-rules/ Business rules as supplied by the business owner
   features/       Per-feature documentation
   decisions/      Lightweight ADRs for technical decisions
+  questions/      Open questions for the architect/business owner
 ```
 
 ## Scope boundaries

@@ -70,6 +70,13 @@ for the full rationale. Summary:
 - Record any non-trivial technical decision as a new file in
   `docs/decisions/` (lightweight ADR: context, decision, consequences).
 - Document each feature under `docs/features/` once it exists.
+- **When you need a decision from the architect/business owner that isn't
+  urgent enough to block on in chat, write it to `docs/questions/`**
+  instead of assuming an answer (see `docs/questions/README.md` for the
+  template/workflow). Keep working on unblocked pieces while it's open.
+  Once answered, act on it and record the outcome in the relevant
+  `docs/business-rules/`, `docs/decisions/`, or `docs/features/` file —
+  `docs/questions/` is the inbox, not the permanent record.
 
 ## Current state
 
