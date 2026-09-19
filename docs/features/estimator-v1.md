@@ -23,7 +23,10 @@ Implements: [`docs/business-rules/estimator-v1-scope.md`](../business-rules/esti
 ## Known gaps vs. the business rules
 
 - All pricing (package totals, plumbing fixture prices) is hardcoded
-  placeholder data, not sourced from a catalogue or approved rate card.
+  placeholder data. Sourcing is now decided — supplier websites, not a
+  hard-coded rate card (see
+  `docs/decisions/0006-estimator-pricing-source-supplier-websites.md`) —
+  but no retrieval mechanism is built yet.
 - Electrical load/cable-size guidance is hardcoded sample data, not a
   configurable rules engine.
 - No floor-plan upload/detection — the plan view is a static illustrative
@@ -40,5 +43,9 @@ Implements: [`docs/business-rules/estimator-v1-scope.md`](../business-rules/esti
 ## Next steps
 
 Not scheduled yet. Needs a decision on what to build next: real catalogue
-data model (Prisma), calculation domain layer (per the "Architecture
-guidance" section of the scope doc), or floor-plan input.
+data model (Prisma) with a supplier-pricing retrieval mechanism (scraping
+vs. API vs. manual import — not chosen), calculation domain layer (per
+the "Architecture guidance" section of the scope doc), floor-plan input,
+or auth (two roles — internal/client — with per-client data isolation;
+method not chosen — see
+`docs/decisions/0005-auth-roles-and-data-isolation.md`).

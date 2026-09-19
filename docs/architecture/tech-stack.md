@@ -32,10 +32,12 @@ with the classic `prisma-client-js` generator output.
 ## Authentication
 
 **Auth.js (NextAuth), planned but not installed or configured.** No login
-flow, provider, or session strategy has been implemented. This is a stack
-decision only, recorded so a later implementer doesn't have to re-litigate
-it — the actual auth requirements (who logs in — customers, staff, both;
-what data needs protecting) are not yet defined.
+flow, provider, or session strategy has been implemented. Requirements
+are now defined (see `docs/decisions/0005-auth-roles-and-data-isolation.md`):
+two roles — internal users (admin functionality) and clients (isolated
+to their own projects/payments only). Specific auth method (credentials/
+OAuth/magic link) and session strategy are still open implementation
+choices.
 
 ## Testing
 
@@ -45,10 +47,11 @@ what data needs protecting) are not yet defined.
 
 ## Deployment
 
-**Undecided.** Docker Compose is configured for local Postgres only.
-No production hosting target, CI/CD pipeline, or environment strategy has
-been chosen. See `docs/decisions/0001-tech-stack.md` for why this was left
-open.
+**Free-tier hosting, specific provider not yet chosen** (see
+`docs/decisions/0004-deployment-target-free-tier.md`). Docker Compose is
+configured for local Postgres only. No CI/CD pipeline or environment
+strategy has been built — keep hosting-specific config provider-neutral
+until a provider is picked.
 
 ## Package management
 

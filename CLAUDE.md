@@ -27,9 +27,11 @@ workflow rules — those come from the business owner and are recorded in
 - **Do not invent business rules.** If a business rule is not written down
   in `docs/business-rules/`, do not assume one and do not encode it in
   code, schema, or copy.
-- **Do not invent pricing.** No price lists, rate tables, markup formulas,
-  or estimation logic beyond what's documented as placeholder/illustrative
-  until the business owner supplies real figures.
+- **Do not invent pricing.** No price lists, rate tables, or markup
+  formulas beyond what's documented as placeholder/illustrative. Real
+  pricing comes from supplier websites, not a hard-coded rate card (see
+  `docs/decisions/0006-estimator-pricing-source-supplier-websites.md`) —
+  when supplier data is unavailable for an item, don't invent a price.
 - **Do not assume customer workflows.** Booking flow, quote approval flow,
   payment flow, etc. are undefined until documented.
 - **The estimator is approved and in progress** (see
@@ -54,11 +56,15 @@ for the full rationale. Summary:
   full-stack app, no separate API service at this stage.
 - **Database:** PostgreSQL
 - **ORM:** Prisma
-- **Auth:** Auth.js (NextAuth) — chosen, not yet installed/configured; no
-  login flow exists yet.
+- **Auth:** Auth.js (NextAuth) — chosen, not yet installed/configured.
+  Two roles required: internal (admin) and client (isolated to own
+  projects/payments only) — see
+  `docs/decisions/0005-auth-roles-and-data-isolation.md`. Specific auth
+  method/session strategy still open.
 - **Testing:** Vitest + Testing Library (unit), Playwright (e2e)
-- **Deployment:** Undecided. Docker Compose is configured for local
-  Postgres only. Do not assume a production hosting target.
+- **Deployment:** Free-tier hosting, provider not yet chosen — see
+  `docs/decisions/0004-deployment-target-free-tier.md`. Docker Compose
+  covers local Postgres only; keep config provider-neutral.
 
 ## Working conventions
 
@@ -82,8 +88,11 @@ for the full rationale. Summary:
 
 Development-environment scaffolding (Next.js app shell, tooling
 configuration, documentation structure) plus an early estimator dashboard
-UI prototype (`src/app/page.tsx`) — see `docs/features/estimator-v1.md`
-for what it does and doesn't do yet. Pricing/engineering values in the
-prototype are placeholders, not approved figures. No persistence
-(Prisma schema is still empty), authentication, or real catalogue/pricing
-data exist yet.
+UI prototype (`src/app/page.tsx`, now with Electrical/Plumbing/Painting/
+Solar/Summary tabs) — see `docs/features/estimator-v1.md` for what it
+does and doesn't do yet. Pricing/engineering values in the prototype are
+placeholders, not approved figures — real pricing will come from
+supplier websites (not yet built). No persistence (Prisma schema is
+still empty) or authentication exist yet, though both now have decided
+requirements (deployment: free-tier, provider TBD; auth: two roles with
+per-client data isolation) — see `docs/decisions/`.
