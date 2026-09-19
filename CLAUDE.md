@@ -28,11 +28,14 @@ workflow rules — those come from the business owner and are recorded in
   in `docs/business-rules/`, do not assume one and do not encode it in
   code, schema, or copy.
 - **Do not invent pricing.** No price lists, rate tables, markup formulas,
-  or estimation logic until the business owner supplies them.
+  or estimation logic beyond what's documented as placeholder/illustrative
+  until the business owner supplies real figures.
 - **Do not assume customer workflows.** Booking flow, quote approval flow,
   payment flow, etc. are undefined until documented.
-- **Do not build the estimator or the 3D model.** These are known future
-  features but are explicitly out of scope until requested.
+- **The estimator is approved and in progress** (see
+  `docs/decisions/0003-approve-estimator-scope.md`); build against
+  `docs/business-rules/estimator-v1-scope.md`, not assumptions. **The 3D
+  model is still out of scope** — don't build it until requested.
 - **Show the plan before significant architectural decisions.** Changes to
   the stack, data model shape, auth approach, or deployment target should
   be proposed and approved before implementation, not decided unilaterally.
@@ -66,12 +69,14 @@ for the full rationale. Summary:
   corresponding rule is documented in `docs/business-rules/`.
 - Record any non-trivial technical decision as a new file in
   `docs/decisions/` (lightweight ADR: context, decision, consequences).
-- Document each feature under `docs/features/` once it exists — this
-  directory is currently empty because no features have been built.
+- Document each feature under `docs/features/` once it exists.
 
 ## Current state
 
-This repository currently contains only development-environment scaffolding:
-a Next.js app shell, tooling configuration, an empty Prisma schema, and
-documentation structure. No business logic, pricing, authentication, or
-domain models have been implemented.
+Development-environment scaffolding (Next.js app shell, tooling
+configuration, documentation structure) plus an early estimator dashboard
+UI prototype (`src/app/page.tsx`) — see `docs/features/estimator-v1.md`
+for what it does and doesn't do yet. Pricing/engineering values in the
+prototype are placeholders, not approved figures. No persistence
+(Prisma schema is still empty), authentication, or real catalogue/pricing
+data exist yet.

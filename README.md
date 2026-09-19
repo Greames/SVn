@@ -7,10 +7,12 @@ scope covers three service categories:
 2. Plumbing services
 3. Painting services
 
-**Status:** development environment scaffold only. No application
-features, business rules, pricing, or authentication have been built yet.
-See [`CLAUDE.md`](./CLAUDE.md) for the rules governing what gets built and
-when.
+**Status:** development environment scaffold plus an early estimator
+dashboard UI prototype (see
+[`docs/features/estimator-v1.md`](./docs/features/estimator-v1.md)). No
+persistence, authentication, or real pricing/catalogue data yet — the
+prototype's numbers are placeholders. See [`CLAUDE.md`](./CLAUDE.md) for
+the rules governing what gets built and when.
 
 ## Tech stack
 
@@ -85,7 +87,7 @@ prisma/
 docs/
   architecture/   System design and stack documentation
   business-rules/ Business rules as supplied by the business owner
-  features/       Per-feature documentation (empty until features exist)
+  features/       Per-feature documentation
   decisions/      Lightweight ADRs for technical decisions
 ```
 
@@ -93,11 +95,13 @@ docs/
 
 This repository intentionally does **not** yet contain:
 
-- Pricing tables or estimation logic
-- Electrical/plumbing/painting business rules
+- Real pricing/catalogue data (prototype pricing is placeholder only)
+- Persistence for the estimator (Prisma schema is still empty)
 - The 3D model tool
 - Customer-facing booking/quote workflows
 - Authentication flows
 
 These are future work, gated on business-owner-approved requirements in
-`docs/business-rules/`.
+`docs/business-rules/`. See
+[`docs/decisions/0003-approve-estimator-scope.md`](./docs/decisions/0003-approve-estimator-scope.md)
+for how the estimator moved from out-of-scope to in-progress.

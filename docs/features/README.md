@@ -1,7 +1,7 @@
 # Features
 
-Empty. No application features have been built yet — this repository
-currently contains development-environment scaffolding only.
+- [`estimator-v1.md`](./estimator-v1.md) — estimator dashboard prototype
+  (in progress, not production-ready)
 
-Each feature gets a doc here once it's implemented, describing what it
-does and which business rules (see `../business-rules/`) it implements.
+Each feature gets a doc here describing what it does and which business
+rules (see `../business-rules/`) it implements.

@@ -102,12 +102,15 @@ The default number of coats must come from configurable business rules, not hard
 Use packages as a starting configuration, not a locked bundle:
 
 ### Standard
+
 Basic practical specification for Electrical, Plumbing and Painting.
 
 ### Premium
+
 Higher-quality fixtures/materials and enhanced specifications.
 
 ### Luxury
+
 High-end fixtures/materials and additional features where appropriate.
 
 **Important:** The client must be able to change any individual item after selecting a package. Package selection must never prevent item-level customization.

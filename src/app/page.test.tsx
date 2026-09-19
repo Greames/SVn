@@ -3,10 +3,10 @@ import { describe, expect, it } from "vitest";
 import Home from "./page";
 
 describe("Home", () => {
-  it("renders the placeholder heading", () => {
+  it("renders the estimator dashboard", () => {
     render(<Home />);
     expect(
-      screen.getByRole("heading", { name: /home services platform/i }),
+      screen.getByRole("heading", { name: /electrical load analysis/i }),
     ).toBeInTheDocument();
   });
 });
