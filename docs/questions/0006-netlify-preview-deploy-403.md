@@ -23,24 +23,30 @@ Every deploy attempt failed with `403 Forbidden` at the upload step —
 tried 3 times: full repo, a clean re-upload without `node_modules`, and
 again with a completely fresh auth token. Same error immediately each
 time, so it's not a size or stale-token issue — it's a permission/policy
-denial. The site's own metadata shows `requiresSSOTeamLogin: true`,
-`whichProjectsRequireSSOTeamLogin: "all"` on that team, which is the most
-likely cause, but this can't be confirmed from inside this session.
+denial.
 
-## Steps to check/fix (in your Netlify account, not something doable from here)
+**Account identified:** user `thulasi.eee@gmail.com` (Google login), team
+"thulasi-eee's team" (slug `thulasi-eee`, ID `6a77183fe6d60fb300772b39`),
+**Free plan**, 1 member, owner role.
 
-1. **Team SSO policy** — Netlify dashboard → Team settings → Security
-   (for the team with ID `6a77183fe6d60fb300772b39`). Check whether
-   "require SSO login" is enabled for the team, and whether it applies to
-   API/integration deploys specifically. If so, disable it or exempt this
-   project.
-2. **Connected app permissions** — Netlify dashboard → User settings →
-   Applications → OAuth Apps (or similar). Find the Claude/Claude Code
-   integration and confirm it has deploy/write scope, not just
-   read/create-site scope.
-3. **Alternative** — if you have a personal (non-team) Netlify account
-   without this policy, tell me and I'll create the preview site there
-   instead, sidestepping the team policy entirely.
+Initial theory was the site's `requiresSSOTeamLogin: true` metadata
+flag — **ruled out**: the account fields show
+`managed_by_sso_or_directory_sync: false`, `saml_slug: null`,
+`enforce_mfa: not_enforced`. This is a personal Free-plan account, not an
+SSO/SAML-managed org, so there's no real SSO enforcement to disable.
+
+## Steps to check (in your Netlify account, not something doable from here)
+
+1. **Connected app permissions** (most likely cause now) — Netlify
+   dashboard → avatar (top-right) → User settings → Applications (or
+   "OAuth Apps"/"Connected apps"). Find the Claude/Claude Code connection
+   and check what scopes it's granted — needs deploy/write access to
+   sites, not just read/create-site.
+2. **Deploys tab on the site** — `app.netlify.com/projects/home-services-estimator-preview`
+   → Deploys. If any attempt shows up there (even failed), it'll carry a
+   real error message instead of the generic 403 this session sees.
+3. **Alternative** — if a different Netlify account (or upgrading/
+   reconfiguring this one) resolves it, tell me and I'll retry.
 
 ## Answer
 
